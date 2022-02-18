@@ -4,10 +4,47 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+class Timer extends React.Component{
+  constructor(props){
+    super(props);
+    this.state = {seconds: 0}
+  }
+
+  componentDidMount(){
+    this.interval = setInterval(()=>this.tick(), 1000)
+  }
+
+  tick(){
+    this.setState(state => ({ seconds: state.seconds+1}));
+  }
+
+  render(){
+    return (
+      <div>
+        Segundos: {this.state.seconds}
+      </div>
+    );
+  }
+}
+
+const varia = "Doggy";
+class HelloMessage extends React.Component{
+
+  render() {
+    return (
+      <div>
+        Hola {this.props.name}
+        <br/>
+        Me siento {this.props.estadoAnimo}
+        {varia}
+      </div>
+    );
+  }
+}
+
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  // <HelloMessage name = "Don Deivid" estadoAnimo = "Sad"/>,
+  <Timer/>,
   document.getElementById('root')
 );
 
